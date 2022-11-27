@@ -16,12 +16,10 @@ struct state_press {
 	int value;
 };
 
-int value_press(char*arr);
+int value_press(char*arr); // 对当前棋盘做价值评估
 
-int max_value(int*value, int start, int end);
-int min_value(int*value, int start, int end);
-
-void recovery_press(char*arr);
+int max_value(int*value, int start, int end); // 取所有子节点价值最大的
+int min_value(int*value, int start, int end); // 取所有子节点价值最小的
 
 int expand_press(char*arr, int step){
 	step++;
@@ -49,4 +47,24 @@ int expand_press(char*arr, int step){
 
 int main(){
 	return 0;
+}
+
+int max_value(int*value, int start, int end){
+	int res = value[start];
+	for (int i = start + 1; i < end; i++){
+		if (res < value[i]){
+			res = value[i];
+		}
+	}
+	return res;
+}
+
+int min_value(int*value, int start, int end){
+	int res = value[start];
+	for (int i = start + 1; i < end; i++){
+		if (res > value[i]){
+			res = value[i];
+		}
+	}
+	return res;
 }
