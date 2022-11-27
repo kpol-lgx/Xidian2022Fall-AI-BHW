@@ -1,5 +1,4 @@
 #include<iostream>
-#include<stack>
 using namespace std;
 
 const int N = 100; // 棋盘总的格子数
